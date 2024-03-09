@@ -1,5 +1,4 @@
-// @ts-check
-const { test, expect, request } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
 test('Wait for Hello World text to Appear', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/dynamic_loading/1');

@@ -1,4 +1,4 @@
-const { test, expect, request } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
 const payload = { "name": "Jane Doe", "username": "jdoe", "email": "janedoe@april.biz", "address": { "street": "Test Street", "suite": "Apt. 55", "city": "Athens", "zipcode": "11141", "geo": { "lat": "-37.3159", "lng": "81.1496" } }, "phone": "1-770-736-8031 x56331", "website": "ministryOfTesting.org", "company": { "name": "Pixel Services", "catchPhrase": "check yourself before you wreck yourself", "bs": "testing" } };
 
@@ -6,21 +6,21 @@ test('Automation of back-end functionality - GET operation', async ({ request })
     const response = await request.get('https://jsonplaceholder.typicode.com/users');
     expect(response.status()).toBe(200);
     const jsonResponse = await response.json();
-    validateJsonSchema(jsonResponse);
+    await validateJsonSchema(jsonResponse);
   });
 
   test('Automation of back-end functionality - POST operation', async ({ request }) => {
     const response = await request.post('https://jsonplaceholder.typicode.com/users', {data:payload});
     expect(response.status()).toBe(201);
     const jsonResponse = await response.json();
-    validateJsonSchema(jsonResponse);
+    await validateJsonSchema(jsonResponse);
   });
 
   test('Automation of back-end functionality - PUT operation', async ({ request }) => {
     const response = await request.put('https://jsonplaceholder.typicode.com/users/10', {data:payload});
     expect(response.status()).toBe(200);
     const jsonResponse = await response.json();
-    validateJsonSchema(jsonResponse);
+    await validateJsonSchema(jsonResponse);
   });
 
   test('Automation of back-end functionality - DELETE operation', async ({ request }) => {
